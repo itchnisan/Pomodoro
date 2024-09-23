@@ -1,0 +1,128 @@
+/* Body styling for desktop and mobile */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bb0b0b; /* Red background */
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+/* Container for the main elements */
+.container {
+    
+    background-color: #bb0b0b; /* Red background */
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 350px;
+    width: 100%;
+}
+
+/* Main title styling */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Flexbox for 'Travail' and 'Pause' buttons */
+.controls {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.controls p {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #b71c1c; /* Dark red for buttons */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.controls p:hover {
+    background-color: #ff6659; /* Lighter red on hover */
+}
+
+.controls p.active {
+    background-color: #b71c1c; /* Keep darker red when active */
+}
+
+/* Timer circle */
+.circle {
+    height: 200px;
+    width: 200px;
+    border: 8px solid #fdd835; /* Golden circle */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 30px auto;
+}
+
+/* Time container */
+.time {
+    display: flex; /* Align minutes and seconds on the same line */
+    gap: 5px; /* Add some space between minutes and seconds */
+    font-size: 48px;
+    color: white; /* White text for timer */
+    font-weight: bold;
+}
+
+/* Colon between minutes and seconds */
+.time p {
+    margin: 0; /* Remove default margin */
+    line-height: 1; /* Ensure numbers and colon align perfectly */
+}
+
+/* Play button styling */
+.play button {
+    background-color: white;
+    color: #d32f2f; /* Red text for button */
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play button:hover {
+    background-color: #ff6659; /* Lighter red on hover */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    .circle {
+        height: 180px;
+        width: 180px;
+    }
+
+    .time {
+        font-size: 40px;
+        display: inline-block;
+    }
+
+    .controls p {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .play button {
+        padding: 12px;
+        font-size: 20px;
+    }
+}
