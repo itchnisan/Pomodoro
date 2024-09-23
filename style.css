@@ -12,6 +12,133 @@ body {
     text-align: center;
 }
 
+/* Conteneur parent pour les boutons de paramètres */
+.button-container {
+    position: relative; /* Relative positioning for the container */
+    width: max-content; /* Just enough width to fit the buttons */
+    height: auto; /* Adjust automatically to content height */
+    margin-bottom: 20px; /* Adds space between buttons and the form */
+}
+
+/* Boutons de paramètres */
+#parameter, #closeparameter {
+    position: absolute; /* Position absolute to overlap */
+    top: 0;
+    left: 0;
+    background-color: #ff0000; /* Example color */
+    color: white;
+    padding: 10px 10px;
+    margin: 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 100%; /* Round buttons */
+    font-size: 18px;
+    z-index: 1;
+}
+
+/* Form styling */
+form {
+    margin-bottom: 20px; /* Add some space between the form and buttons */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form p {
+    margin-bottom: 10px;
+}
+
+form input {
+    padding: 5px;
+    font-size: 16px;
+    width: 50px;
+    text-align: center;
+}
+
+/* Aligning play and reset buttons at the bottom */
+.play {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.play button {
+    background-color: rgb(224, 57, 57);
+    color: white; /* Change text color to white */
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 10px; /* Add spacing between buttons */
+    transition: background-color 0.3s ease;
+}
+
+.play button:hover {
+    background-color: #ff6659; /* Lighter red on hover */
+}
+
+/* Align the reset button on the same line as start */
+#reset {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+
+
+/* Conteneur parent pour les boutons */
+.button-container {
+    
+    position: relative; /* Relative positioning for the container */
+    width: max-content; /* Just enough width to fit the buttons */
+    height: auto; /* Adjust automatically to content height */
+    
+}
+
+/* Bouton 1 */
+#parameter {
+    position: absolute; /* Absolute positioning to overlap with the other button */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Set a higher z-index for this button to be on top */
+    background-color: #ff0000; /* Example color */
+    color: white; /* Example color */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Bouton 2 */
+#closeparameter {
+    position: absolute; /* Same position as the first button */
+    top: 0;
+    left: 0;
+    z-index: 0; /* Lower z-index so it's underneath */
+    background-color: #ff0000; /* Example color for differentiation */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+body.parameter form,body.parameter #closeparameter{
+    z-index: 2;
+    visibility: visible;
+}
+body:not(.parameter) form,body:not(.parameter) #closeparameter{
+    z-index: 0;
+    visibility: hidden;
+}
+
+
+
 /* Container for the main elements */
 .container {
     
@@ -61,7 +188,7 @@ h1 {
 .circle {
     height: 200px;
     width: 200px;
-    border: 8px solid #fdd835; /* Golden circle */
+    border: 8px solid #366339; /* Golden circle */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -86,14 +213,15 @@ h1 {
 
 /* Play button styling */
 .play button {
-    background-color: white;
+    background-color: rgb(224, 57, 57);
     color: #d32f2f; /* Red text for button */
     border: none;
-    border-radius: 50%;
+    border-radius: 100%;
     padding: 15px;
     font-size: 24px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    
 }
 
 .play button:hover {
@@ -117,6 +245,7 @@ h1 {
     }
 
     .controls p {
+        color: #ffffff;
         font-size: 16px;
         padding: 8px 16px;
     }

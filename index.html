@@ -37,8 +37,26 @@
                 </div>
             </div>
             <div class="play">
-                <button id="start" onclick="mainStart()">Start</button>
-                <button id="reset" style="display:none;" onclick="resetTimer()">Reset</button>
+
+                <div class="button-container">
+                    <button id="parameter"><i class="fa-solid fa-gear"></i></button>
+                    <button id="closeparameter"><i class="fa-solid fa-gear"></i></button>
+                </div>
+                
+                <form>
+                    <p>
+                        <label for="time">work</label>
+                       <input id="time" type="number" value="25">
+
+                    </p>
+                    <p>
+                        <label for="break">break</label>
+                        <input id="break" type="number" value="5">
+                    </p>
+                </form>
+
+                <button id="start" onclick="mainStart()"><i class="fa-solid fa-play"></i></button>
+                <button id="reset" style="display:none;" onclick="resetTimer()"><i class="fa-solid fa-arrows-rotate"></i></button>
             </div>
         </div>
     </section>
