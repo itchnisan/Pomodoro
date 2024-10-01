@@ -1,99 +1,95 @@
 let workButton = document.getElementById("work");
-let breakButton = document.getElementById("break");
+let breakButton = document.getElementById("break-btn");
 let inputworkTime = document.getElementById("time");
 let inputbreakTime = document.getElementById("break");
 let buttonParam = document.getElementById("parameter");
 let buttoncloseParam = document.getElementById("closeparameter");
-// variable for set the timer
 
+document.getElementById("start").addEventListener("click", mainStart);
+document.getElementById("reset").addEventListener("click", resetTimer);
 
+// Variables pour le minuteur
+let workTime = parseInt(inputworkTime.value) || 25;  
+let breakTime = parseInt(inputbreakTime.value) || 5;  
+let seconds = 59;
 
-let workTime = inputworkTime.value;
-let breakTime = inputbreakTime.value;
-let seconds = "00";
+let isWorkMode = true;
+let workMinutes = workTime - 1;
+let breakMinutes = breakTime - 1;
 
-// const wich increase when timer is launch
-let buffer = 0;
-
-buttoncloseParam.addEventListener("click",()=>{
+buttoncloseParam.addEventListener("click", () => {
     document.body.classList.remove("parameter");
+});
 
-})
-buttonParam.addEventListener("click",()=>{
+buttonParam.addEventListener("click", () => {
     document.body.classList.add("parameter");
-
-})
+});
 
 window.onload = () => {
     document.getElementById('minutes').innerHTML = workTime;
-    document.getElementById('seconds').innerHTML = seconds;
-
+    document.getElementById('seconds').innerHTML = "00";
     workButton.classList.add('active');
-}
+};
 
 function resetTimer() {
     location.reload(); // Recharge la page pour réinitialiser le minuteur
 }
-inputworkTime.addEventListener("change",()=>{
-    workTime = inputworkTime.value;
+
+// Vérifie si les inputs sont modifiés et mets à jour les variables correspondantes
+inputworkTime.addEventListener("change", () => {
+    workTime = parseInt(inputworkTime.value) || 25; // Valeur par défaut si l'entrée est vide ou invalide
+    workMinutes = workTime - 1; // Mise à jour des minutes de travail
     document.getElementById('minutes').innerHTML = workTime;
-    mainStart();
-}
-);
-inputbreakTime.addEventListener("change",()=>{
+});
 
-    breakTime = inputbreakTime.value;
-    mainStart();
-})
+inputbreakTime.addEventListener("change", () => {
+    breakTime = parseInt(inputbreakTime.value) || 5; // Valeur par défaut si l'entrée est vide ou invalide
+    breakMinutes = breakTime - 1; // Mise à jour des minutes de pause
+});
 
-// Start the timer
 function mainStart() {
-   
     document.getElementById('start').style.display = "none";
-    document.getElementById('reset').style.display = "block";//button reset
-    
+    document.getElementById('reset').style.display = "block";
+
     seconds = 59;
 
-    let workMinutes = workTime - 1;
-    let breakMinutes = breakTime - 1;
+    let timerFunction = () => {
+        // Si mode travail, affiche les minutes et secondes de travail
+        if (isWorkMode) {
+            document.getElementById('minutes').innerHTML = workMinutes;
+        } else {
+            document.getElementById('minutes').innerHTML = breakMinutes;
+        }
+        document.getElementById('seconds').innerHTML = seconds < 10 ? "0" + seconds : seconds;
 
-    let breakCount = 0;
-
-    // countdown Function
-    let countdownFunction = () => {
-        //increase buffer
-        buffer++;
-        //change the display 
-        document.getElementById('minutes').innerHTML = workMinutes;
-        document.getElementById('seconds').innerHTML = (seconds < 10 ? "0" : "") + seconds; // Ajout du "0" pour formater correctement les secondes
-
+        // Décrémenter les secondes
         seconds--;
 
-        if (seconds === -1) {
-            workMinutes--;
-            if (workMinutes === -1) {
-                if (breakCount % 2 === 0) {
-                    // Start the break
-                    workMinutes = breakMinutes;
-                    breakCount++;
-
-                    //change the display 
-                    workButton.classList.remove('active');
-                    breakButton.classList.add('active');
+        // Si les secondes arrivent à zéro
+        if (seconds === 0) {
+            if (isWorkMode) {
+                if (workMinutes > 0) {
+                    workMinutes--;
                 } else {
-                    
-                    workMinutes = workTime;
-                    breakCount++;
-
-                    //change the display 
-                    breakButton.classList.remove('active');
-                    workButton.classList.add('active');
+                    // Passe en mode pause, mais ne réinitialise pas `breakMinutes`
+                    isWorkMode = false;
+                    workButton.classList.toggle("active-work");
+                    breakButton.classList.toggle("active-break");
+                }
+            } else {
+                if (breakMinutes > 0) {
+                    breakMinutes--;
+                } else {
+                    workButton.classList.toggle("active-work");
+                    breakButton.classList.toggle("active-break");
+                    // Passe en mode travail, mais ne réinitialise pas `workMinutes`
+                    isWorkMode = true;
+                    workMinutes = workTime - 1; // Réinitialisation après la fin de la pause
                 }
             }
+            // Réinitialiser les secondes à 59 pour le prochain minuteur
             seconds = 59;
         }
-    }
-
-    // Start countdown (every 1000 ms = 1 second)
-    setInterval(countdownFunction, 1000);
+    };
+    setInterval(timerFunction, 1000);
 }

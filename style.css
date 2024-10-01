@@ -1,4 +1,4 @@
-/* Body styling for desktop and mobile */
+/* Body styling */
 body {
     margin: 0;
     padding: 0;
@@ -6,150 +6,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #bb0b0b; /* Red background */
+    background-color: #ad0000; /* Red background */
     font-family: 'Arial', sans-serif;
     color: white;
     text-align: center;
 }
 
-/* Conteneur parent pour les boutons de paramètres */
-.button-container {
-    position: relative; /* Relative positioning for the container */
-    width: max-content; /* Just enough width to fit the buttons */
-    height: auto; /* Adjust automatically to content height */
-    margin-bottom: 20px; /* Adds space between buttons and the form */
-}
-
-/* Boutons de paramètres */
-#parameter, #closeparameter {
-    position: absolute; /* Position absolute to overlap */
-    top: 0;
-    left: 0;
-    background-color: #ff0000; /* Example color */
-    color: white;
-    padding: 10px 10px;
-    margin: 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 100%; /* Round buttons */
-    font-size: 18px;
-    z-index: 1;
-}
-
-/* Form styling */
-form {
-    margin-bottom: 20px; /* Add some space between the form and buttons */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-form p {
-    margin-bottom: 10px;
-}
-
-form input {
-    padding: 5px;
-    font-size: 16px;
-    width: 50px;
-    text-align: center;
-}
-
-/* Aligning play and reset buttons at the bottom */
-.play {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-
-.play button {
-    background-color: rgb(224, 57, 57);
-    color: white; /* Change text color to white */
-    border: none;
-    border-radius: 50%;
-    padding: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    margin: 0 10px; /* Add spacing between buttons */
-    transition: background-color 0.3s ease;
-}
-
-.play button:hover {
-    background-color: #ff6659; /* Lighter red on hover */
-}
-
-/* Align the reset button on the same line as start */
-#reset {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-
-
-/* Conteneur parent pour les boutons */
-.button-container {
-    
-    position: relative; /* Relative positioning for the container */
-    width: max-content; /* Just enough width to fit the buttons */
-    height: auto; /* Adjust automatically to content height */
-    
-}
-
-/* Bouton 1 */
-#parameter {
-    position: absolute; /* Absolute positioning to overlap with the other button */
-    top: 0;
-    left: 0;
-    z-index: 1; /* Set a higher z-index for this button to be on top */
-    background-color: #ff0000; /* Example color */
-    color: white; /* Example color */
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-}
-
-/* Bouton 2 */
-#closeparameter {
-    position: absolute; /* Same position as the first button */
-    top: 0;
-    left: 0;
-    z-index: 0; /* Lower z-index so it's underneath */
-    background-color: #ff0000; /* Example color for differentiation */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-body.parameter form,body.parameter #closeparameter{
-    z-index: 2;
-    visibility: visible;
-}
-body:not(.parameter) form,body:not(.parameter) #closeparameter{
-    z-index: 0;
-    visibility: hidden;
-}
-
-
-
-/* Container for the main elements */
+/* Main container */
 .container {
-    
-    background-color: #bb0b0b; /* Red background */
+    background-color: #ad0000; 
     padding: 20px;
     border-radius: 15px;
     max-width: 350px;
     width: 100%;
+    text-align: center;
 }
 
-/* Main title styling */
+/* Main title */
 h1 {
     font-size: 28px;
     font-weight: bold;
@@ -158,7 +31,17 @@ h1 {
     text-transform: uppercase;
 }
 
-/* Flexbox for 'Travail' and 'Pause' buttons */
+.active-work {
+    background-color: #366339; 
+    color: white; /* Texte en blanc pour plus de visibilité */
+}
+
+.active-break {
+    background-color: #366339; 
+    color: white;
+}
+
+/* Controls for work and break buttons */
 .controls {
     display: flex;
     justify-content: space-around;
@@ -170,25 +53,20 @@ h1 {
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 10px;
-    background-color: #b71c1c; /* Dark red for buttons */
+   
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.controls p:hover {
-    background-color: #ff6659; /* Lighter red on hover */
-}
+/* Ajoute les classes pour le style bleu */
 
-.controls p.active {
-    background-color: #b71c1c; /* Keep darker red when active */
-}
 
 /* Timer circle */
 .circle {
     height: 200px;
     width: 200px;
-    border: 8px solid #366339; /* Golden circle */
+    border: 8px solid #366339; /* Circle border */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -196,37 +74,117 @@ h1 {
     margin: 0 auto 30px auto;
 }
 
-/* Time container */
+/* Time display */
 .time {
-    display: flex; /* Align minutes and seconds on the same line */
-    gap: 5px; /* Add some space between minutes and seconds */
+    display: flex; /* Display time horizontally */
+    justify-content: center;
+    align-items: center;
     font-size: 48px;
-    color: white; /* White text for timer */
+    color: white;
     font-weight: bold;
+    gap: 5px; /* Space between minutes and seconds */
 }
 
-/* Colon between minutes and seconds */
-.time p {
-    margin: 0; /* Remove default margin */
-    line-height: 1; /* Ensure numbers and colon align perfectly */
+
+/* Play and reset button container */
+.play {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
 }
 
 /* Play button styling */
 .play button {
-    background-color: rgb(224, 57, 57);
-    color: #d32f2f; /* Red text for button */
+    background-color: #366339; /* Green background */
+    color: white; /* White text */
     border: none;
-    border-radius: 100%;
+    border-radius: 50%; /* Make the button perfectly round */
     padding: 15px;
+    width: 60px; /* Define width */
+    height: 60px; /* Define height */
     font-size: 24px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
 }
 
+/* Hover effect */
 .play button:hover {
-    background-color: #ff6659; /* Lighter red on hover */
+    background-color: #366339; /* Slightly darker green */
+    transform: scale(1.1); /* Slightly larger on hover */
 }
+
+/* Active effect */
+.play button:active {
+    background-color: #366339; /* Dark green on click */
+    transform: scale(0.95); /* Slightly smaller when pressed */
+}
+
+/* Parent container for buttons */
+.button-container {
+    position: relative; /* Allows absolute positioning of buttons */
+    width: 60px; /* Set the same width as the Play button */
+    height: 60px; /* Set the same height as the Play button */
+    margin: 0 auto; /* Center the button container */
+}
+
+/* Button 1 (parameter) */
+#parameter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Higher z-index to appear on top */
+    background-color:#366339; /* Same background as Play */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Round shape */
+    padding: 15px;
+    width: 60px; /* Same width as Play button */
+    height: 60px; /* Same height as Play button */
+    font-size: 24px; /* Font size consistent with Play button */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button 2 (close parameter) */
+#closeparameter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Lower z-index to be underneath */
+    background-color:#366339; /* Different color to distinguish */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Round shape */
+    padding: 15px;
+    width: 60px; /* Same width as Play button */
+    height: 60px; /* Same height as Play button */
+    font-size: 24px; /* Font size consistent with Play button */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+/*
+#settingsForm {
+    display: none;  Hide the form initially */
+/*}*/
+
+/*Show the form when the class 'show' is added 
+#settingsForm.show {
+    display: block;  Make the form visible */
+/*}*/
+
+
+body.parameter form,body.parameter #closeparameter{
+    z-index: 2;
+    visibility: visible;
+}
+body:not(.parameter) form,body:not(.parameter) #closeparameter{
+    z-index: 0;
+    visibility: hidden;
+}
+
 
 /* Mobile responsiveness */
 @media (max-width: 600px) {
@@ -241,11 +199,9 @@ h1 {
 
     .time {
         font-size: 40px;
-        display: inline-block;
     }
 
     .controls p {
-        color: #ffffff;
         font-size: 16px;
         padding: 8px 16px;
     }

@@ -25,8 +25,8 @@
             <h1>POMODORO TIMER </h1>
 
             <div class="controls">
-                <p id="work">work</p>
-                <p id="break">break</p>
+                <p id="work" class="active-work">work</p>
+                <p id="break-btn">break</p>
             </div>
 
             <div class="timer">
@@ -43,7 +43,7 @@
                     <button id="closeparameter"><i class="fa-solid fa-gear"></i></button>
                 </div>
                 
-                <form>
+                <form id="settingsForm">
                     <p>
                         <label for="time">work</label>
                        <input id="time" type="number" value="25">
@@ -55,8 +55,8 @@
                     </p>
                 </form>
 
-                <button id="start" onclick="mainStart()"><i class="fa-solid fa-play"></i></button>
-                <button id="reset" style="display:none;" onclick="resetTimer()"><i class="fa-solid fa-arrows-rotate"></i></button>
+                <button id="start"><i class="fa-solid fa-play"></i></button>
+                <button id="reset" style="display:none;"><i class="fa-solid fa-arrows-rotate"></i></button>
             </div>
         </div>
     </section>
