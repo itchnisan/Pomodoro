@@ -13,6 +13,7 @@ If the values are incorrect when you trigger the "play" button you reach an erro
 
 To run this project locally, follow these steps:
 
+
 **1. Clone the repository:**  
 - git clone https://github.com/itchnisan/Pomodoro.git
 

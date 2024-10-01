@@ -33,7 +33,7 @@ h1 {
 
 .active-work {
     background-color: #366339; 
-    color: white; /* Texte en blanc pour plus de visibilité */
+    color: white; 
 }
 
 .active-break {
@@ -59,7 +59,6 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-/* Ajoute les classes pour le style bleu */
 
 
 /* Timer circle */
