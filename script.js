@@ -7,6 +7,7 @@ let buttoncloseParam = document.getElementById("closeparameter");
 // variable for set the timer
 
 
+
 let workTime = inputworkTime.value;
 let breakTime = inputbreakTime.value;
 let seconds = "00";
